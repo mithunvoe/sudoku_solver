@@ -1,16 +1,9 @@
-import 'dart:math';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sudoku_solver/main.dart';
 import 'package:sudoku_solver/provider/themes_provider.dart';
 import 'package:sudoku_solver/screens/drawer.dart';
 import 'package:sudoku_solver/widgets/grid.dart';
-import 'package:sudoku_solver/widgets/link_text.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_switch_dark_light/flutter_switch_dark_light.dart';
 
 class SudokuSolver extends StatefulWidget {
   const SudokuSolver({super.key});
@@ -22,41 +15,30 @@ class SudokuSolver extends StatefulWidget {
 
 class _SudokuState extends State<SudokuSolver> {
   @override
-  Widget build(BuildContext context)  {
+  Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       drawer: DrawerTab(),
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(60),
+        preferredSize: Size.fromHeight(68.0), // Set the desired height here
         child: AppBar(
           title: Text(
             "Sudoku Solver",
             style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                   color: Theme.of(context).colorScheme.primaryContainer,
                   fontFamily: GoogleFonts.aBeeZee().fontFamily,
-                  // fontWeight: FontWeight.bold,
                 ),
           ),
           actions: [
             Switch(
-              value:  context.watch<ThemeProvider>().isLightTheme,
+              value: context.watch<ThemeProvider>().isLightTheme,
               onChanged: (val) {
                 Provider.of<ThemeProvider>(context, listen: false)
                     .toggleTheme();
               },
-              inactiveThumbImage: const ResizeImage(
-                AssetImage(
-                  'assets/img/moon.png',
-                ),
-                width: 25,
-                height: 25,
-              ),
-              activeThumbImage: const ResizeImage(
-                AssetImage('assets/img/sun.png'),
-                width: 25,
-                height: 25,
-              ),
+              inactiveThumbImage: const AssetImage('assets/img/moon.png'),
               inactiveThumbColor: Colors.white,
+              activeThumbImage: const AssetImage('assets/img/sun.png'),
               activeColor: Colors.white,
               inactiveTrackColor:
                   Theme.of(context).colorScheme.primaryContainer,
