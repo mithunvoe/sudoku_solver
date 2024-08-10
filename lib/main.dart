@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sudoku_solver/provider/themes_provider.dart';
-import 'package:sudoku_solver/widgets/sudoku_solver.dart';
+import 'package:sudoku_solver/screens/sudoku_solver.dart';
 
 void main() {
   runApp(

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'link_text.dart';
+import '../widgets/link_text.dart';
 
 class DrawerTab extends StatefulWidget {
   @override

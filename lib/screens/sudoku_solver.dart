@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sudoku_solver/main.dart';
 import 'package:sudoku_solver/provider/themes_provider.dart';
-import 'package:sudoku_solver/widgets/drawer.dart';
+import 'package:sudoku_solver/screens/drawer.dart';
 import 'package:sudoku_solver/widgets/grid.dart';
 import 'package:sudoku_solver/widgets/link_text.dart';
 import 'package:url_launcher/url_launcher.dart';
