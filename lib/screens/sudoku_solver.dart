@@ -22,7 +22,7 @@ class SudokuSolver extends StatefulWidget {
 
 class _SudokuState extends State<SudokuSolver> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       drawer: DrawerTab(),
@@ -39,7 +39,7 @@ class _SudokuState extends State<SudokuSolver> {
           ),
           actions: [
             Switch(
-              value: context.watch<ThemeProvider>().isLightTheme,
+              value:  context.watch<ThemeProvider>().isLightTheme,
               onChanged: (val) {
                 Provider.of<ThemeProvider>(context, listen: false)
                     .toggleTheme();

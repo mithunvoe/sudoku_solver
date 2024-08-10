@@ -55,12 +55,15 @@ final darkTheme = ThemeData.dark().copyWith(
 );
 
 class ThemeProvider with ChangeNotifier {
-  var themeMode = ThemeMode.system;
-  bool isLightTheme = ThemeMode.system==ThemeMode.light;
+  ThemeMode themeMode;
+  bool isLightTheme;
 
-  void toggleTheme() async{
-    print('33');
-    if (themeMode == ThemeMode.light) {
+  ThemeProvider({
+    this.themeMode = ThemeMode.system,
+  }) : isLightTheme = WidgetsBinding.instance.window.platformBrightness == Brightness.light;
+
+  void toggleTheme() async {
+    if (themeMode == ThemeMode.light || (themeMode == ThemeMode.system && isLightTheme)) {
       themeMode = ThemeMode.dark;
       isLightTheme = false;
     } else {
