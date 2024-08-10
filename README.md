@@ -13,9 +13,9 @@ This app is designed to solve Sudoku puzzles using a backtracking algorithm. It 
 - Responsive UI
 ## Download
 Click here to download and install the app on your Android device: [Sudoku Solver](https://github.com/mithunvoe/sudoku_solver/releases/download/android/app-release.apk)
-## Getting Started
+### Setup Project
 
-### Prerequisites
+## Prerequisites
 
 - Flutter SDK: [Install Flutter](https://flutter.dev/docs/get-started/install)
 - Dart SDK: Included with Flutter
