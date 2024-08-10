@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sudoku_solver/main.dart';
+import 'package:sudoku_solver/provider/themes_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/link_text.dart';
 
@@ -11,22 +15,21 @@ class DrawerTab extends StatefulWidget {
 }
 
 class _DrawerTabState extends State<DrawerTab> {
-
   void onQuestionBtn() {
     showCupertinoDialog(
         context: context,
         builder: (ctx) => AlertDialog(
-          title: const Text("How To?"),
-          content: const Text(
-              "This app helps gets you the solution of a valid Sudoku problem. To use this app, you just have to fill the grids as per given and press the solve button. Your can clear the grids just by pressing the clear button. Invalid grids may lead to error."),
-          actions: [
-            OutlinedButton(
-                onPressed: () {
-                  Navigator.pop(ctx);
-                },
-                child: const Text("Continue"))
-          ],
-        ));
+              title: const Text("How To?"),
+              content: const Text(
+                  "This app helps gets you the solution of a valid Sudoku problem. To use this app, you just have to fill the grids as per given and press the solve button. Your can clear the grids just by pressing the clear button. Invalid grids may lead to error."),
+              actions: [
+                OutlinedButton(
+                    onPressed: () {
+                      Navigator.pop(ctx);
+                    },
+                    child: const Text("Continue"))
+              ],
+            ));
   }
 
   void onAboutBtn() {
@@ -34,8 +37,8 @@ class _DrawerTabState extends State<DrawerTab> {
     const fb = 'https://www.facebook.com/mithunvoe';
     const github = 'https://github.com/mithunvoe';
     showAboutDialog(
-        context: context,anchorPoint: const Offset(20, 0),
-
+        context: context,
+        anchorPoint: const Offset(20, 0),
         applicationIcon: Icon(Icons.grid_on_rounded),
         applicationVersion: "0.0.1",
         applicationName: "Sudoku Solver",
@@ -126,6 +129,25 @@ class _DrawerTabState extends State<DrawerTab> {
             onTap: () {
               // Navigator.pop(context);
               onAboutBtn();
+            },
+          ),
+          Spacer(),
+          // Text('data')
+          ListTile(
+            contentPadding: const EdgeInsets.only(bottom: 10, left: 15),
+            leading: Image(
+              image: context.watch<ThemeProvider>().isLightTheme
+                  ? AssetImage('assets/img/githubD.png')
+                  : AssetImage('assets/img/githubL.png'),
+              height: 60,
+            ),
+            title: const Text(
+              "Visit Github Repository",
+              textAlign: TextAlign.start,
+            ),
+            onTap: () {
+              launchUrl(Uri.parse(
+                  'https://github.com/mithunvoe/sudoku_solver/tree/master'));
             },
           ),
         ],

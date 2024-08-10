@@ -26,39 +26,44 @@ class _SudokuState extends State<SudokuSolver> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       drawer: DrawerTab(),
-      appBar: AppBar(
-        title: Text(
-          "Sudoku Solver",
-          style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                color: Theme.of(context).colorScheme.primaryContainer,
-                fontFamily: GoogleFonts.aBeeZee().fontFamily,
-                // fontWeight: FontWeight.bold,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(60),
+        child: AppBar(
+          title: Text(
+            "Sudoku Solver",
+            style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  fontFamily: GoogleFonts.aBeeZee().fontFamily,
+                  // fontWeight: FontWeight.bold,
+                ),
+          ),
+          actions: [
+            Switch(
+              value: context.watch<ThemeProvider>().isLightTheme,
+              onChanged: (val) {
+                Provider.of<ThemeProvider>(context, listen: false)
+                    .toggleTheme();
+              },
+              inactiveThumbImage: const ResizeImage(
+                AssetImage(
+                  'assets/img/moon.png',
+                ),
+                width: 25,
+                height: 25,
               ),
+              activeThumbImage: const ResizeImage(
+                AssetImage('assets/img/sun.png'),
+                width: 25,
+                height: 25,
+              ),
+              inactiveThumbColor: Colors.white,
+              activeColor: Colors.white,
+              inactiveTrackColor:
+                  Theme.of(context).colorScheme.primaryContainer,
+              activeTrackColor: Theme.of(context).colorScheme.primaryContainer,
+            )
+          ],
         ),
-        actions: [
-          Switch(
-            value: context.watch<ThemeProvider>().isLightTheme,
-            onChanged: (val) {
-              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
-            },
-            inactiveThumbImage: const ResizeImage(
-              AssetImage(
-                'assets/img/moon.png',
-              ),
-              width: 25,
-              height: 25,
-            ),
-            inactiveThumbColor: Colors.white,
-            activeThumbImage: const ResizeImage(
-              AssetImage('assets/img/sun.png'),
-              width: 25,
-              height: 25,
-            ),
-            activeColor: Colors.white,
-            inactiveTrackColor: Theme.of(context).colorScheme.primaryContainer,
-            activeTrackColor: Theme.of(context).colorScheme.primaryContainer,
-          )
-        ],
       ),
       body: const Grid(),
     );
