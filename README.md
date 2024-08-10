@@ -11,7 +11,8 @@ This app is designed to solve Sudoku puzzles using a backtracking algorithm. It 
 - Real-time theme switching
 - Backtracking algorithm for solving puzzles
 - Responsive UI
-
+## Download
+Click here to download and install the app on your Android device: [Sudoku Solver](https://github.com/mithunvoe/sudoku_solver/releases/download/android/app-release.apk)
 ## Getting Started
 
 ### Prerequisites
